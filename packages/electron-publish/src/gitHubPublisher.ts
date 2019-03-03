@@ -70,6 +70,10 @@ export class GitHubPublisher extends HttpPublisher {
       this.releaseType = "prerelease"
       log.info({reason: "env EP_PRE_RELEASE is set to true"}, "GitHub provider release type is set to prerelease")
     }
+    else if (isEnvTrue(process.env.EP_RELEASE)) {
+      this.releaseType = "release"
+      log.info({reason: "env EP_RELEASE is set to true"}, "GitHub provider release type is set to release")
+    }
     else if (info.releaseType != null) {
       this.releaseType = info.releaseType
     }
